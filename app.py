@@ -6,14 +6,14 @@ from datetime import date
 st.set_page_config(page_title="Due Hitter • Live", layout="wide", page_icon="⚾")
 
 st.title("Due Hitter Dashboard")
-st.caption("Fixed • Real MLB API • Polished for Today")
+st.caption("Safe API Parsing • Polished for Today")
 
 MLB_API = "https://statsapi.mlb.com/api/v1"
 
 @st.cache_data(ttl=60)
 def get_todays_games():
     today = date.today().strftime("%Y-%m-%d")
-    url = f"{MLB_API}/schedule?sportId=1&date={today}&hydrate=lineups"
+    url = f"{MLB_API}/schedule?sportId=1&date={today}"
     try:
         r = requests.get(url, timeout=10)
         if r.status_code == 200:
@@ -94,4 +94,4 @@ for i, game in enumerate(top_games, 1):
         )
 
 st.divider()
-st.caption("All approved features kept. Lineup accuracy improved. Ready for today’s games.")
+st.caption("All approved features kept. Safe API parsing. Ready for today’s games.")
