@@ -109,18 +109,7 @@ for i, game in enumerate(top_games, 1):
                 "woba_vs_p": st.column_config.NumberColumn("wOBA vs P"),
             }
         )
-from bs4 import BeautifulSoup
 
-def get_live_box_score(game_id or team):
-    try:
-        url = f"https://www.espn.com/mlb/boxscore/_/gameId/{game_id}"  # Use real game ID from MLB API
-        r = requests.get(url, timeout=10)
-        soup = BeautifulSoup(r.text, 'html.parser')
-        # Parse player stats (this is a starting point)
-        # Example: find player rows and extract hits/walks
-        return "Live box score data fetched (expand parsing as needed)"
-    except:
-        return "Live box score fetch failed"
 
 # Call it in your game loop
 st.info(get_live_box_score("example_game_id"))
