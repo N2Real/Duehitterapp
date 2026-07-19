@@ -6,7 +6,7 @@ from datetime import date
 st.set_page_config(page_title="Due Hitter • Live", layout="wide", page_icon="⚾")
 
 st.title("Due Hitter Dashboard")
-st.caption("Safe API Parsing • Polished for Today")
+st.caption("Safe Real API • Polished for Today")
 
 MLB_API = "https://statsapi.mlb.com/api/v1"
 
@@ -21,10 +21,10 @@ def get_todays_games():
             games = []
             for d in data.get("dates", []):
                 for g in d.get("games", []):
-                    away = g.get('teams', {}).get('away', {}).get('team', {}).get('abbreviation', 'AWAY')
-                    home = g.get('teams', {}).get('home', {}).get('team', {}).get('abbreviation', 'HOME')
+                    away_team = g.get('teams', {}).get('away', {}).get('team', {}).get('abbreviation', 'AWAY')
+                    home_team = g.get('teams', {}).get('home', {}).get('team', {}).get('abbreviation', 'HOME')
                     games.append({
-                        "matchup": f"{away} @ {home}",
+                        "matchup": f"{away_team} @ {home_team}",
                         "status": g.get("status", {}).get("detailedState", "Upcoming")
                     })
             return games[:4]
@@ -94,4 +94,4 @@ for i, game in enumerate(top_games, 1):
         )
 
 st.divider()
-st.caption("All approved features kept. Safe API parsing. Ready for today’s games.")
+st.caption("Safe API parsing. All approved features kept. Ready for today’s games.")
