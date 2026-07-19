@@ -21,10 +21,10 @@ def get_todays_games():
             games = []
             for d in data.get("dates", []):
                 for g in d.get("games", []):
-                    away_team = g.get('teams', {}).get('away', {}).get('team', {}).get('abbreviation', 'AWAY')
-                    home_team = g.get('teams', {}).get('home', {}).get('team', {}).get('abbreviation', 'HOME')
+                    away = g.get('teams', {}).get('away', {}).get('team', {}).get('abbreviation', 'AWAY')
+                    home = g.get('teams', {}).get('home', {}).get('team', {}).get('abbreviation', 'HOME')
                     games.append({
-                        "matchup": f"{away_team} @ {home_team}",
+                        "matchup": f"{away} @ {home}",
                         "status": g.get("status", {}).get("detailedState", "Upcoming")
                     })
             return games[:4]
@@ -94,4 +94,4 @@ for i, game in enumerate(top_games, 1):
         )
 
 st.divider()
-st.caption("Safe API parsing. All approved features kept. Ready for today’s games.")
+st.caption("Safe parsing fixed. All approved features kept. Ready for today’s games.")
