@@ -4,3 +4,4 @@ requests
 beautifulsoup4
 pip3 install
 sudo apt update
+sudo apt upgrade
